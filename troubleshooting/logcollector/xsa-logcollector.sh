@@ -79,7 +79,7 @@ read -rp "When you are done please press ENTER to collect the logs:"
 
 echo -e "\nCollecting the logs..."
 
-{ echo -e "Approuter logs:\n\n"; cf logs "$approutername" --recent; echo -e "\n\nApp logs:\n\n"; cf logs "$appname" --recent; } | zip -q "$logszip" -
+{ echo -e "Approuter logs:\n\n"; xs logs "$approutername" --recent; echo -e "\n\nApp logs:\n\n"; xs logs "$appname" --recent; } | zip -q "$logszip" -
 
 #Unsetting log-levels, env variables and restarting apps
 echo -e "\nRestoring log levels...\n"
