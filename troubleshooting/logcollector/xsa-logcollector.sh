@@ -55,17 +55,12 @@ else
 	exit 0
 fi
 
-#Set the log-levels, enviroment variables and restart the apps
+#Set the log-levels, enviroment variables, restage and restart the apps
 echo -e "\nSetting log levels...\n"
 xs set-logging-level "$approutername" "*" debug
 xs set-logging-level "$appname" "*" debug
 xs set-env "$approutername" REQUEST_TRACE true
 xs set-env "$appname" REQUEST_TRACE true
-
-#cf set-env "$approutername" XS_APP_LOG_LEVEL DEBUG
-#cf set-env "$appname" SAP_EXT_TRC stdout
-#cf set-env "$appname" SAP_EXT_TRL 3
-#cf set-env "$appname" DEBUG xssec*
 
 echo -e "\nRestage and restart the app and the approuter...\n"
 xs restage "$approutername"
@@ -88,10 +83,6 @@ xs unset-logging-level "$approutername" "*"
 xs unset-logging-level "$appname" "*"
 xs unset-env "$approutername" REQUEST_TRACE
 xs unset-env "$appname" REQUEST_TRACE
-#cf unset-env "$approutername" XS_APP_LOG_LEVEL
-#cf unset-env "$appname" SAP_EXT_TRC
-#cf unset-env "$appname" SAP_EXT_TRLu 
-#cf unset-env "$appname" DEBUG
 
 echo -e "\nRestart the app and the approuter...\n"
 xs restage "$approutername"
